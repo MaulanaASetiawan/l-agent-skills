@@ -1,0 +1,32 @@
+{
+  "name": "l-agent-skill",
+  "version": "1.0.0",
+  "description": "Plan-first multi-agent skills for AI coding tools (Antigravity, Claude Code): /l-plan, /l-build, /l-verify, /l-review and 15 specialists.",
+  "bin": {
+    "l-agent-skill": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ai-agent",
+    "skills",
+    "claude-code",
+    "antigravity",
+    "code-review",
+    "planning",
+    "multi-agent"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaulanaASetiawan/l-agent-skill"
+  }
+}
