@@ -13,25 +13,25 @@ Works with **Antigravity** and **Claude Code**.
 Install all skills into your project or global agent config (Claude Code, Antigravity, Cursor, Codex, etc.):
 
 ```bash
-npx skills add MaulanaASetiawan/l-agent-skill
+npx skills add MaulanaASetiawan/l-agent-skills
 ```
 
 List available skills or install a single specialist:
 
 ```bash
-npx l-agent-skill install
+npx l-agent-skills install
 ```
 
 Or straight from GitHub, without npm publishing:
 
 ```bash
-npx github:MaulanaASetiawan/l-agent-skill install
+npx github:MaulanaASetiawan/l-agent-skills install
 ```
 
 To target a specific tool:
 
 ```bash
-npx github:MaulanaASetiawan/l-agent-skill install --target antigravity   # or: claude, all
+npx github:MaulanaASetiawan/l-agent-skills install --target antigravity   # or: claude, all
 ```
 
 Restart your tool afterwards.
@@ -46,8 +46,8 @@ The installer never overwrites files it didn't create. If a skill or agent with 
 ## Uninstall
 
 ```bash
-npx l-agent-skill uninstall            # all tools
-npx l-agent-skill uninstall --target claude
+npx l-agent-skills uninstall            # all tools
+npx l-agent-skills uninstall --target claude
 ```
 
 This removes only what L-Agent installed, and restores `CLAUDE.md` to its previous content.
