@@ -1,0 +1,11 @@
+{
+  "name": "l-agent",
+  "displayName": "L-Agent",
+  "version": "2.0.0",
+  "description": "Plan before coding, keep it simple, change only what matters, verify everything. Workflows: /l-plan, /l-build, /l-verify, /l-review, plus 15 specialists callable by name (e.g. /ui-builder, /debugger).",
+  "suggestedPrompts": [
+    "/l-plan add rate limiting to the login endpoint",
+    "/l-review the changes on this branch",
+    "/l-verify my last change"
+  ]
+}

@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const SRC = path.join(__dirname, '..', 'src');
+const ROOT = path.join(__dirname, '..');
+const SRC = path.join(ROOT, 'src');
 const HOME = process.env.L_AGENT_HOME || os.homedir();
 const MARK_START = '<!-- l-agent:start -->';
 const MARK_END = '<!-- l-agent:end -->';
@@ -153,6 +154,17 @@ const claude = {
   },
 };
 
+function syncRepo(src) {
+  fs.rmSync(path.join(ROOT, 'skills'), { recursive: true, force: true });
+  fs.rmSync(path.join(ROOT, 'agents'), { recursive: true, force: true });
+  write(path.join(ROOT, 'plugin.json'), src.pluginJson);
+  write(path.join(ROOT, '.claude-plugin', 'plugin.json'), src.pluginJson);
+  write(path.join(ROOT, 'rules', 'AGENTS.md'), src.rules);
+  write(path.join(ROOT, 'AGENTS.md'), src.rules);
+  for (const s of src.skills) write(path.join(ROOT, 'skills', s.name, 'SKILL.md'), s.text);
+  for (const a of src.specialists) write(path.join(ROOT, 'agents', `${a.name}.md`), a.text);
+}
+
 const TARGETS = { antigravity, claude };
 
 function resolveTargets(arg) {
@@ -174,6 +186,7 @@ function help() {
 Usage:
   l-agent-skill install   [--target antigravity|claude|all]
   l-agent-skill uninstall [--target antigravity|claude|all]
+  l-agent-skill sync
   l-agent-skill help
 
 Without --target, every detected tool is used.`);
@@ -185,7 +198,11 @@ function main(argv) {
   const targetArg = tIdx !== -1 ? argv[tIdx + 1] : undefined;
   if (tIdx !== -1 && !targetArg) throw new Error('--target needs a value');
 
-  if (command === 'install') {
+  if (command === 'sync') {
+    const src = loadSource();
+    syncRepo(src);
+    console.log(`Synced repo root: ${src.skills.length} skills, ${src.specialists.length} agents`);
+  } else if (command === 'install') {
     const src = loadSource();
     const version = require('../package.json').version;
     for (const key of resolveTargets(targetArg)) {
@@ -212,4 +229,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { loadSource, parseFrontmatter, removeBlock, MARK_START, MARK_END };
+module.exports = { loadSource, syncRepo, parseFrontmatter, removeBlock, MARK_START, MARK_END };

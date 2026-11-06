@@ -7,20 +7,32 @@ Works with **Antigravity** and **Claude Code**.
 
 ## Install
 
+### Option 1: Using `npx skills` (Recommended — directly from GitHub)
+
+Install all skills into your project or global agent config (Claude Code, Antigravity, Cursor, Codex, etc.):
+
 ```bash
-npx l-agent-skill install
+npx skills add MaulanaASetiawan/l-agent-skill
 ```
 
-Or straight from GitHub, without npm publishing:
+List available skills or install a single specialist:
+
+```bash
+npx skills add MaulanaASetiawan/l-agent-skill --list
+npx skills add MaulanaASetiawan/l-agent-skill --skill l-plan
+npx skills add MaulanaASetiawan/l-agent-skill --skill ui-builder --global
+```
+
+### Option 2: Full Plugin Installer (Antigravity + Claude Code with Sub-Agents & Core Rules)
 
 ```bash
 npx github:MaulanaASetiawan/l-agent-skill install
 ```
 
-This installs into every supported tool it finds. To pick one:
+To target a specific tool:
 
 ```bash
-npx l-agent-skill install --target antigravity   # or: claude, all
+npx github:MaulanaASetiawan/l-agent-skill install --target antigravity   # or: claude, all
 ```
 
 Restart your tool afterwards.

@@ -4,9 +4,10 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { loadSource, MARK_START } = require('../bin/cli.js');
+const { loadSource, syncRepo, MARK_START } = require('../bin/cli.js');
 
-const CLI = path.join(__dirname, '..', 'bin', 'cli.js');
+const ROOT = path.join(__dirname, '..');
+const CLI = path.join(ROOT, 'bin', 'cli.js');
 const SECTIONS = ['## Role', '## Input', '## Process', '## Output', '## Rules', '## Stop and ask when'];
 const errors = [];
 const check = (ok, msg) => { if (!ok) errors.push(msg); };
@@ -37,6 +38,16 @@ for (const s of src.specialists) {
   check(workflowText.includes(`\`${s.name}\``), `${s.name}: not referenced by any workflow`);
 }
 check(JSON.parse(src.pluginJson).name === 'l-agent', 'plugin.json: name must be "l-agent"');
+
+// ---------- repo root sync (for `npx skills add <owner>/<repo>`) ----------
+
+syncRepo(src);
+check(fs.readdirSync(path.join(ROOT, 'skills')).length === 19, 'repo root: expected 19 skills/');
+check(fs.readdirSync(path.join(ROOT, 'agents')).length === 15, 'repo root: expected 15 agents/');
+check(fs.existsSync(path.join(ROOT, 'AGENTS.md')), 'repo root: missing AGENTS.md');
+check(fs.existsSync(path.join(ROOT, 'rules', 'AGENTS.md')), 'repo root: missing rules/AGENTS.md');
+check(fs.existsSync(path.join(ROOT, 'plugin.json')), 'repo root: missing plugin.json');
+check(fs.existsSync(path.join(ROOT, '.claude-plugin', 'plugin.json')), 'repo root: missing .claude-plugin/plugin.json');
 
 const run = (home, args) =>
   execFileSync(process.execPath, [CLI, ...args], { env: { ...process.env, L_AGENT_HOME: home }, stdio: 'pipe' });

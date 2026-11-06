@@ -1,5 +1,5 @@
 {
-  "name": "l-agent-skill",
+  "name": "@lsetiawan/l-agent-skill",
   "version": "1.0.0",
   "description": "Plan-first multi-agent skills for AI coding tools (Antigravity, Claude Code): /l-plan, /l-build, /l-verify, /l-review and 15 specialists.",
   "bin": {
@@ -27,6 +27,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MaulanaASetiawan/l-agent-skill"
+    "url": "git+https://github.com/MaulanaASetiawan/l-agent-skill.git"
   }
 }
