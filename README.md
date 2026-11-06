@@ -19,20 +19,9 @@ npx skills add MaulanaASetiawan/l-agent-skills
 List available skills or install a single specialist:
 
 ```bash
-npx l-agent-skills install
+npx skills add MaulanaASetiawan/l-agent-skills --list
 ```
 
-Or straight from GitHub, without npm publishing:
-
-```bash
-npx github:MaulanaASetiawan/l-agent-skills install
-```
-
-To target a specific tool:
-
-```bash
-npx github:MaulanaASetiawan/l-agent-skills install --target antigravity   # or: claude, all
-```
 
 Restart your tool afterwards.
 
@@ -41,13 +30,10 @@ Restart your tool afterwards.
 | Antigravity | `~/.gemini/config/plugins/l-agent/` (plugin: skills, agents, rules) |
 | Claude Code | `~/.claude/skills/`, `~/.claude/agents/`, and a marked block in `~/.claude/CLAUDE.md` |
 
-The installer never overwrites files it didn't create. If a skill or agent with the same name already exists, it stops and lists the conflicts. Your existing `CLAUDE.md` is backed up to `CLAUDE.md.bak` before the first write.
-
 ## Uninstall
 
 ```bash
-npx l-agent-skills uninstall            # all tools
-npx l-agent-skills uninstall --target claude
+npx skills remove            # all tools
 ```
 
 This removes only what L-Agent installed, and restores `CLAUDE.md` to its previous content.
