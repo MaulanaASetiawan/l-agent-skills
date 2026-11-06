@@ -1,4 +1,5 @@
 # L-Agent
+####  `under development`
 
 Plan-first skills and sub-agents for AI coding tools.
 Think before coding. Keep it simple. Change only what matters. Verify everything.
@@ -9,12 +10,6 @@ Works with **Antigravity** and **Claude Code**.
 
 ```bash
 npx l-agent-skill install
-```
-
-Or straight from GitHub, without npm publishing:
-
-```bash
-npx github:MaulanaASetiawan/l-agent-skill install
 ```
 
 This installs into every supported tool it finds. To pick one:
