@@ -1,4 +1,5 @@
 # L-Agent
+####  `under development`
 
 Plan-first skills and sub-agents for AI coding tools.
 Think before coding. Keep it simple. Change only what matters. Verify everything.
@@ -18,12 +19,10 @@ npx skills add MaulanaASetiawan/l-agent-skill
 List available skills or install a single specialist:
 
 ```bash
-npx skills add MaulanaASetiawan/l-agent-skill --list
-npx skills add MaulanaASetiawan/l-agent-skill --skill l-plan
-npx skills add MaulanaASetiawan/l-agent-skill --skill ui-builder --global
+npx l-agent-skill install
 ```
 
-### Option 2: Full Plugin Installer (Antigravity + Claude Code with Sub-Agents & Core Rules)
+Or straight from GitHub, without npm publishing:
 
 ```bash
 npx github:MaulanaASetiawan/l-agent-skill install
