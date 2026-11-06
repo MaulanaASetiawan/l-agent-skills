@@ -8,8 +8,6 @@ Works with **Antigravity** and **Claude Code**.
 
 ## Install
 
-### Option 1: Using `npx skills` (Recommended — directly from GitHub)
-
 Install all skills into your project or global agent config (Claude Code, Antigravity, Cursor, Codex, etc.):
 
 ```bash
